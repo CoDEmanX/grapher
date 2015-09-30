@@ -677,7 +677,7 @@
     */
   Grapher.prototype._getWebGL = function () {
     var gl = null;
-    try { gl = this.canvas.getContext("webgl") || this.canvas.getContext("experimental-webgl"); }
+    try { gl = this.canvas.getContext("webgl", {antialias: true}) || this.canvas.getContext("experimental-webgl", {antialias: true}); }
     catch (x) { gl = null; }
     return gl;
   };
@@ -1202,7 +1202,7 @@ function fromHexToInt (string) {
   var CanvasRenderer = Renderer.extend({
     init: function (o) {
       this._super(o);
-      this.context = this.canvas.getContext('2d');
+      this.context = this.canvas.getContext('2d', {antialias: true});
     },
 
     render: function () {
